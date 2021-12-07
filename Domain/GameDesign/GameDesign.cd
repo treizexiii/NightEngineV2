@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Domain.GameDesign.GameState">
+    <Position X="13.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameDesign\GameState.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Chars" />
+      <Property Name="World" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Domain.GameDesign.State.StaticElement">
+    <Position X="17.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>GameDesign\State\StaticElement.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.321" />
+  </Class>
+  <Class Name="Domain.GameDesign.State.World">
+    <Position X="17.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAABACABABAAAAAAABAABAAAAAAAAAIAEAAAAA=</HashCode>
+      <FileName>GameDesign\State\World.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_elements" />
+    </ShowAsAssociation>
+    <Lollipop Orientation="Left" Position="0.55" />
+  </Class>
+  <Class Name="Domain.GameDesign.State.Characters">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAgAAAAAAQBAAAAAABAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>GameDesign\State\Characters.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Elements" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Orientation="Left" Position="0.498" />
+  </Class>
+  <Class Name="Domain.GameDesign.State.MobileElement">
+    <Position X="9.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgACAQAAABAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>GameDesign\State\MobileElement.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Direction" />
+    </ShowAsAssociation>
+    <Lollipop Orientation="Left" Position="0.362" />
+  </Class>
+  <Class Name="Domain.GameDesign.State.Pacman">
+    <Position X="8.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameDesign\State\Pacman.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Status" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Domain.GameDesign.State.Ghost">
+    <Position X="11" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>GameDesign\State\Ghost.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Status" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Domain.GameDesign.State.Wall">
+    <Position X="16" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameDesign\State\Wall.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="WallTypeId" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Domain.GameDesign.State.Space">
+    <Position X="18.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameDesign\State\Space.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SpaceTypeId" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Domain.GameDesign.State.WorldIterator">
+    <Position X="19.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAIAAQAAAAAAAAABAAAAAAQAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>GameDesign\State\WorldIterator.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_world" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Domain.Interfaces.ITerator&lt;T&gt;">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAABAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameDesign\Interfaces\ITerator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Domain.GameDesign.State.Interfaces.IElements">
+    <Position X="0.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAgAAAAAAABAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>GameDesign\State\Interfaces\IElements.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Domain.GameDesign.State.Interfaces.IElement">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>GameDesign\State\Interfaces\IElement.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Domain.Interfaces.ITerable&lt;T&gt;">
+    <Position X="3" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameDesign\Interfaces\ITerable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Domain.GameDesign.State.Direction">
+    <Position X="13" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAABAQAQAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>GameDesign\State\Direction.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Domain.GameDesign.State.GhostStatus">
+    <Position X="11" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAIAAAA=</HashCode>
+      <FileName>GameDesign\State\GhostStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Domain.GameDesign.State.PacmanStatus">
+    <Position X="8.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAgAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>GameDesign\State\PacmanStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Domain.GameDesign.State.WallTypeId">
+    <Position X="16" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAQAAAAAAAAAwAAQAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>GameDesign\State\WallTypeId.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Domain.GameDesign.State.SpaceTypeId">
+    <Position X="18.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAACBAAAAAAAAAAAAAiAAAA=</HashCode>
+      <FileName>GameDesign\State\SpaceTypeId.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
