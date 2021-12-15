@@ -1,11 +1,10 @@
-﻿using System;
+﻿using GameEngine.Engine.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GameEngine.Engine
@@ -27,8 +26,9 @@ namespace GameEngine.Engine
 
         public Color BackgroundColor = Color.Black;
         public Vector2 CameraPosition = new Vector2().Zero();
-        
-        private static List<Shape2D> AllShapes = new List<Shape2D>();
+
+        private static List<Texture> AllTextures = new List<Texture>();
+        private static List<Sprite2D> AllSprites = new List<Sprite2D>();
 
         public NightEngine(Vector2 screenSize, string title)
         {
@@ -40,6 +40,8 @@ namespace GameEngine.Engine
             _window.Size = new Size((int)_screenSize.X, (int)_screenSize.Y);
             _window.Text = _title;
             _window.Paint += Renderer;
+            _window.KeyUp += WindowKeyUp;
+            _window.KeyDown += WindowKeyDown;
 
             _gameLoopThread = new Thread(GameLoop);
             _gameLoopThread.Start();
@@ -51,25 +53,49 @@ namespace GameEngine.Engine
         {
             Graphics g = e.Graphics;
             g.Clear(BackgroundColor);
-
             g.TranslateTransform(CameraPosition.X, CameraPosition.Y);
 
-            foreach (Shape2D shape in AllShapes)
+            foreach (Sprite2D sprite in AllSprites)
             {
-                g.FillRectangle(new SolidBrush(Color.Red), shape.Position.X, shape.Position.Y, shape.Scale.X, shape.Scale.Y);
+                g.DrawImage(sprite.Texture, sprite.Position.X, sprite.Position.Y, sprite.Scale.X, sprite.Scale.Y);
             }
         }
 
-        public static void RegisterShape(Shape2D shape)
+        public static void RegisterSprite(Sprite2D sprite)
         {
-            AllShapes.Add(shape);
+            AllSprites.Add(sprite);
         }
 
-        public static void UnRegisterShape(Shape2D shape)
+        public static void UnRegisterSprite(Sprite2D sprite)
         {
-            AllShapes.Remove(shape);
+            if (AllSprites.Count == 0)
+            {
+                throw new IndexOutOfRangeException("No more sprite");
+            }
+            AllSprites.Remove(sprite);
         }
 
+        public static void RegisterTextures(string path, string tag)
+        {
+            if (AllTextures.Exists(c => c.Tag == tag))
+            {
+                throw new TextureLoadingException($"Texture {tag} already exists", tag);
+            }
+            Texture texture = TextureFactory.BuildTexture(path, tag);
+            AllTextures.Add(texture);
+        }
+
+        public static List<Sprite2D> GetAllSprite()
+        {
+            return AllSprites;
+        }
+
+        public static Texture GetTexture(string tag)
+        {
+            return AllTextures.FirstOrDefault(t => t.Tag == tag);
+        }
+
+        // Main loop
         private void GameLoop()
         {
             int fps = 60;
@@ -90,7 +116,7 @@ namespace GameEngine.Engine
                 {
                     OnDraw();
                     _window.BeginInvoke((MethodInvoker)delegate { _window.Refresh(); });
-                    OnUpdate();
+                    OnUpdate(AllSprites);
                     long elapsed = NanoTime() - lastTime;
                     long milliSleep = (nanoPerFrame - elapsed) / 1000000;
                     if (milliSleep > 0)
@@ -100,14 +126,26 @@ namespace GameEngine.Engine
                 }
                 catch (Exception ex)
                 {
-                    Log.Error("Window is missing : " + ex.Message);
+                    Log.Error($"Exception : {ex.GetType()} | {ex.Message}");
+                    _gameLoopThread.Abort();
+                    Console.ReadKey();
                     Environment.Exit(0);
                 }
             }
         }
 
+        private void WindowKeyDown(object sender, KeyEventArgs e)
+        {
+            GetKeyDown(e);
+        }
+
+        private void WindowKeyUp(object sender, KeyEventArgs e)
+        {
+            GetKeyUp(e);
+        }
+
         public abstract void OnLoad();
-        public abstract void OnUpdate();
+        public abstract void OnUpdate(List<Sprite2D> AllSprites);
         public abstract void OnDraw();
         public abstract void GetKeyDown(KeyEventArgs e);
         public abstract void GetKeyUp(KeyEventArgs e);
