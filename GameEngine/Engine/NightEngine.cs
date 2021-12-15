@@ -25,7 +25,8 @@ namespace GameEngine.Engine
         private string _title = "New Game";
 
         public Color BackgroundColor = Color.Black;
-        public Vector2 CameraPosition = new Vector2().Zero();
+        //public Vector2 CameraPosition = new Vector2().Zero();
+        public Camera Camera = new Camera(new Vector2());
 
         private static List<Texture> AllTextures = new List<Texture>();
         private static List<Sprite2D> AllSprites = new List<Sprite2D>();
@@ -53,7 +54,7 @@ namespace GameEngine.Engine
         {
             Graphics g = e.Graphics;
             g.Clear(BackgroundColor);
-            g.TranslateTransform(CameraPosition.X, CameraPosition.Y);
+            g.TranslateTransform(Camera.GetXPos(), Camera.GetYPos());
 
             foreach (Sprite2D sprite in AllSprites)
             {

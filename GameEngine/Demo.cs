@@ -32,7 +32,7 @@ namespace GameEngine
             {"g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"},
         };
 
-        public Demo() : base(new Vector2(1920, 1080), "NightEngine Demo")
+        public Demo() : base(new Vector2(1366, 768), "NightEngine Demo")
         {
         }
 
@@ -65,8 +65,7 @@ namespace GameEngine
 
         public override void OnUpdate(List<Sprite2D> AllSprites)
         {
-            CameraPosition.X = player.Position.X;
-            CameraPosition.Y = player.Position.Y;
+            Camera.MoveCamera(player.Position);
 
             if (_up) player.Position.Y -= 10f;
             if (_down) player.Position.Y += 10f;

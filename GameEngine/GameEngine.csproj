@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Demo.cs" />
     <Compile Include="Engine\AudioStream.cs" />
+    <Compile Include="Engine\Camera.cs" />
     <Compile Include="Engine\Exceptions\TextureLoadingException.cs" />
     <Compile Include="Engine\NightEngine.cs">
       <SubType>Form</SubType>
