@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -50,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Demo.cs" />
+    <Compile Include="Engine\AudioStream.cs" />
     <Compile Include="Engine\Exceptions\TextureLoadingException.cs" />
     <Compile Include="Engine\NightEngine.cs">
       <SubType>Form</SubType>

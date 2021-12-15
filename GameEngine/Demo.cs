@@ -17,7 +17,6 @@ namespace GameEngine
 
         Sprite2D player;
         Vector2 lasPos = new Vector2();
-        //Sprite2D player2;
 
         string[,] Map =
         {
@@ -41,7 +40,6 @@ namespace GameEngine
         {
             Log.Info("Loading...");
             Console.WriteLine($"{AssetPath}");
-            //var files = Directory.GetFiles(AssetPath, "*.png");
 
             BackgroundColor = Color.Orange;
 
@@ -59,7 +57,6 @@ namespace GameEngine
                 }
             }
             player = new Sprite2D(new Vector2(70, 70), new Vector2(70, 70), GetTexture("player"));
-            //player2 = new Sprite2D(new Vector2(80, 80), new Vector2(70, 70), GetTexture("player"));
         }
 
         public override void OnDraw()
@@ -68,6 +65,9 @@ namespace GameEngine
 
         public override void OnUpdate(List<Sprite2D> AllSprites)
         {
+            CameraPosition.X = player.Position.X;
+            CameraPosition.Y = player.Position.Y;
+
             if (_up) player.Position.Y -= 10f;
             if (_down) player.Position.Y += 10f;
             if (_right) player.Position.X += 10f;
