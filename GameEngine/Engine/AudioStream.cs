@@ -8,7 +8,7 @@ namespace GameEngine.Engine
 {
     public class AudioStream
     {
-        private List<AudioFiles> _audioFiles;
+        private readonly List<AudioFiles> _audioFiles = new List<AudioFiles>();
         private Audio _audio = null;
 
         public AudioStream()
@@ -28,7 +28,8 @@ namespace GameEngine.Engine
             {
                 throw new FileNotFoundException($"No {tag} audio found");
             }
-            _audio.Play(file.Path);
+
+            _audio?.Play(file.Path);
         }
 
         public void StopSound()
