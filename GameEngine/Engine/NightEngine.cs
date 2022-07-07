@@ -54,7 +54,7 @@ namespace GameEngine.Engine
         {
             Graphics g = e.Graphics;
             g.Clear(BackgroundColor);
-            g.TranslateTransform(Camera.GetXPos(), Camera.GetYPos());
+            // g.TranslateTransform(Camera.GetXPos(), Camera.GetYPos());
 
             foreach (Sprite2D sprite in AllSprites)
             {
